@@ -4,8 +4,7 @@
     "LogLevel": {
       "Default": "Information",
       "LinkChecker": "Trace",
-      "CheckLinksConsole": "Debug",
-      "Microsoft": "Warning"  
+      "CheckLinksConsole.Program":  "Debug"
     }
   }
 }

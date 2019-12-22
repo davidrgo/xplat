@@ -21,11 +21,10 @@ namespace CheckLinksConsole
         
 		static void Main(string[] args)
 		{
-            var config = new Config(args);
+
+			var config = new Config(args);
             Logs.Init(config.ConfigurationRoot);
             var logger = Logs.Factory.CreateLogger<Program>();
-   
-
             
             Directory.CreateDirectory(config.Output.GetReportDirectory());
             logger.LogInformation(200,$"Saving report to {config.Output.GetReportDirectory()}");
@@ -47,7 +46,14 @@ namespace CheckLinksConsole
                     var status = link.IsMissing ? "Missing" : "OK";
                     file.WriteLine($"{status} - {link.Link}");
                     linksDb.Links.Add(link);
+		            Console.WriteLine("{0} {1}",link.Id, link.Link);
                 }
+
+                /**
+		 * docker run -d --name sqllinux-netcore -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1Secure*Password1' -e 'MSSQL_PID=Enterprise' -p 1433:1433 -d microsoft/mssql-server-linux:2017-latest
+                 * docker hub: https://hub.docker.com/r/microsoft/mssql-server-linux
+		 * docker run -d --name mysql-netcore -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=Links -p 3306:3306 mysql
+                 */
                 linksDb.SaveChanges();
             }
            

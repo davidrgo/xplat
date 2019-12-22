@@ -7,6 +7,7 @@ namespace CheckLinksConsole
 		public OutputSettings()
 		{
 			File = "file.txt";
+			Folder = "reports";
 		}
 		public string Folder { get; set; }
 		public string File { get; set; }

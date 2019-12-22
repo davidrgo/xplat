@@ -13,7 +13,7 @@ namespace CheckLinksConsole
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = @"Server=localhost;Database=Links;User Id=sa;Password: whatever12!";
+            var connection = @"Server=localhost;Database=Links;User Id=SA;Password=1Secure*Password1";
             optionsBuilder.UseSqlServer(connection);
         }
     }

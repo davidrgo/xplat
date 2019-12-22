@@ -1,5 +1,7 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace CheckLinksConsole
@@ -27,6 +29,7 @@ namespace CheckLinksConsole
             var configuration = configBuilder.Build();
             ConfigurationRoot = configuration;
             Site = configuration["site"];
+            var section = configuration.GetSection("output");
             Output = configuration.GetSection("output").Get<OutputSettings>();
         }
 
